@@ -6,10 +6,14 @@ import {getCustomRepository} from 'typeorm';
 import AppointmentsRepository from '../repositories/AppointmentsRepository';
 import CreateAppointmentService from '../services/CreateAppointmentService'
 
+import ensureAuthenticated from '../middlewares/ensureAuthenticated'
+
 const appointmentsRouter = Router();
 
 
 //Rota: Recever a requisição, chamar outro arquivo, devolver uma resposta
+
+appointmentsRouter.use(ensureAuthenticated);
 
 appointmentsRouter.get('/', async(request, response) =>{
   const appointmentsRepository = getCustomRepository(AppointmentsRepository)
