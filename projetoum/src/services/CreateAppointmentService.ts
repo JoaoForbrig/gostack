@@ -11,6 +11,7 @@ import AppointmentsRepository from '../repositories/AppointmentsRepository';
  */
 
 interface Request {
+  // eslint-disable-next-line camelcase
   provider_id: string;
   date: Date;
 }
@@ -24,10 +25,6 @@ class CreateAppointmentService {
     const appointmentsRepository = getCustomRepository(AppointmentsRepository);
 
     const appointmentDate = startOfHour(date);
-
-    const findAppointmentInSameDate = await appointmentsRepository.findByDate(
-      appointmentDate,
-    );
 
     const appointment = appointmentsRepository.create({
       provider_id,

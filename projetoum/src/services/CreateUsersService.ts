@@ -1,5 +1,5 @@
 import { getRepository } from 'typeorm';
-import {hash} from 'bcryptjs'
+import { hash } from 'bcryptjs';
 import User from '../models/User';
 
 interface Request {
@@ -28,8 +28,7 @@ class CreateUsersService {
       password: hashedPassword,
     });
 
-
-    //delete user.password      <== ARRUMAR
+    // delete user.password      <== ARRUMAR
 
     await usersRepository.save(user);
 
