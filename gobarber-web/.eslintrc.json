@@ -40,6 +40,7 @@
         "react-hooks/rules-of-hooks": "error",
         "react/jsx-props-no-spreading": "off",
         "react/prop-types":"off",
+        "no-unused-expressions":"off",
         "react/jsx-indent-props":"off",
         "react-hooks/exhaustive-deps": "warn",
         "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
