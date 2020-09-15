@@ -2,10 +2,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Router, request, response } from 'express';
 import multer from 'multer';
-import uploadConfig from '../config/upload';
+import uploadConfig from '@config/upload';
 
-import CreateUsersService from '../services/CreateUsersService';
-import UpdateUserAvatarService from '../services/UpdateUserAvatarService';
+import CreateUsersService from '@modules/users/services/CreateUsersService';
+import UpdateUserAvatarService from '@modules/users/services/UpdateUserAvatarService';
 
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 
