@@ -2,18 +2,46 @@
 import AppError from '@shared/errors/AppError';
 import FakeUsersRepository from '../repositories/fakes/FakeUsersRepository';
 import CreateUsersService from './CreateUsersService';
+import FakeHashProvider from '../providers/HashProvider/fakes/FakeHashProvider';
 
-describe('CreateAppoitment', () => {
+describe('CreateUser', () => {
   it('should be able to create a new user', async () => {
     const fakeUsersRepository = new FakeUsersRepository();
-    const createUsers = new CreateUsersService(fakeUsersRepository);
+    const fakeHashProvider = new FakeHashProvider();
+    const createUsers = new CreateUsersService(
+      fakeUsersRepository,
+      fakeHashProvider,
+    );
 
-    const appointment = await createUsers.execute({
+    const user = await createUsers.execute({
       name: 'John Doe',
-      email: 'johndoe@',
+      email: 'johndoe@gmail.com',
+      password: '123456',
     });
 
-    expect(appointment).toHaveProperty('id');
-    expect(appointment.provider_id).toBe('123123');
+    expect(user).toHaveProperty('id');
+  });
+
+  it('it should not be able to create a new user with same email fro another', async () => {
+    const fakeUsersRepository = new FakeUsersRepository();
+    const fakeHashProvider = new FakeHashProvider();
+    const createUsers = new CreateUsersService(
+      fakeUsersRepository,
+      fakeHashProvider,
+    );
+
+    await createUsers.execute({
+      name: 'John Doe',
+      email: 'johndoe@gmail.com',
+      password: '123456',
+    });
+
+    expect(
+      createUsers.execute({
+        name: 'John Doe',
+        email: 'johndoe@gmail.com',
+        password: '123456',
+      }),
+    ).rejects.toBeInstanceOf(AppError);
   });
 });
