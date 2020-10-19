@@ -3,7 +3,7 @@
   "host": "localhost",
   "port": 5432,
   "username": "postgres",
-  "password": "jonnyrei789",
+  "password": "docker",
   "database": "postgres",
   "entities":[
     "./src/modules/**/infra/typeorm/entities/*.ts"
