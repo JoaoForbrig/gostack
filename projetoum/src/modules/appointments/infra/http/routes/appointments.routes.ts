@@ -14,6 +14,6 @@ const providerAppointmentController = new ProviderAppointmentController();
 appointmentsRouter.use(ensureAuthenticated);
 
 appointmentsRouter.post('/', appointmentController.create);
-appointmentsRouter.post('/me', providerAppointmentController.index);
+appointmentsRouter.get('/me', providerAppointmentController.index);
 
 export default appointmentsRouter;
