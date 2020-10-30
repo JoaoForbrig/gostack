@@ -39,6 +39,12 @@ export declare class PlatformTools {
     static appendFileSync(filename: string, data: any): void;
     static writeFile(path: string, data: any): Promise<void>;
     /**
+     * Loads a dotenv file into the environment variables.
+     *
+     * @param path The file to load as a dotenv configuration
+     */
+    static dotenv(pathStr: string): void;
+    /**
      * Gets environment variable.
      */
     static getEnvVariable(name: string): any;
@@ -57,5 +63,5 @@ export declare class PlatformTools {
     static logError(prefix: string, error: any): void;
     static logWarn(prefix: string, warning: any): void;
     static log(message: string): void;
-    static warn(message: string): any;
+    static warn(message: string): string;
 }

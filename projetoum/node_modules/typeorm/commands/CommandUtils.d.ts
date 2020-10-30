@@ -5,7 +5,7 @@ export declare class CommandUtils {
     /**
      * Creates directories recursively.
      */
-    static createDirectories(directory: string): any;
+    static createDirectories(directory: string): Promise<string | undefined>;
     /**
      * Creates a file with the given content in the given path.
      */

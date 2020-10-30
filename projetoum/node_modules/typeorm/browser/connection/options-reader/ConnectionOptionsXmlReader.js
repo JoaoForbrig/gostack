@@ -1,4 +1,5 @@
-import * as tslib_1 from "tslib";
+import { __awaiter, __generator } from "tslib";
+import { parseString as xmlParser } from 'xml2js';
 import { PlatformTools } from "../../platform/PlatformTools";
 /**
  * Reads connection options defined in the xml file.
@@ -13,9 +14,9 @@ var ConnectionOptionsXmlReader = /** @class */ (function () {
      * Reads connection options from given xml file.
      */
     ConnectionOptionsXmlReader.prototype.read = function (path) {
-        return tslib_1.__awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, void 0, void 0, function () {
             var xml;
-            return tslib_1.__generator(this, function (_a) {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.readXml(path)];
                     case 1:
@@ -49,7 +50,6 @@ var ConnectionOptionsXmlReader = /** @class */ (function () {
      * Reads xml file contents and returns them in a promise.
      */
     ConnectionOptionsXmlReader.prototype.readXml = function (path) {
-        var xmlParser = PlatformTools.load("xml2js").parseString;
         var xmlOptions = { trim: true, explicitRoot: false };
         return new Promise(function (ok, fail) {
             xmlParser(PlatformTools.readFileSync(path), xmlOptions, function (err, result) { return err ? fail(err) : ok(result); });

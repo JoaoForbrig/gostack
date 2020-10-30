@@ -21,7 +21,7 @@ export interface TableIndexOptions {
     isSpatial?: boolean;
     /**
      * The FULLTEXT modifier indexes the entire column and does not allow prefixing.
-     * Works only in MySQL.
+     * Supported only in MySQL & SAP HANA.
      */
     isFulltext?: boolean;
     /**
