@@ -2,7 +2,7 @@ import handlebars from 'handlebars';
 import fs from 'fs';
 
 import IParseMailTemplateDTO from '../dtos/IParseMailTemplateDTO';
-import IMailTemplatePovider from '../models/IMailTemplatePovider';
+import IMailTemplatePovider from '../models/IMailTemplateProvider';
 
 class HandlebarsMailTemplateProvider implements IMailTemplatePovider {
   public async parse({

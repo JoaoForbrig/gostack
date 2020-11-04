@@ -1,4 +1,4 @@
-import IMailTemplatePovider from '../models/IMailTemplatePovider';
+import IMailTemplatePovider from '../models/IMailTemplateProvider';
 
 class FakeMailTemplateProvider implements IMailTemplatePovider {
   public async parse(): Promise<string> {
