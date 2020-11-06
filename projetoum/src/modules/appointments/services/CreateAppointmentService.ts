@@ -4,7 +4,6 @@ import { startOfHour, isBefore, getHours, format } from 'date-fns';
 import { injectable, inject } from 'tsyringe';
 
 import ICacheProvider from '@shared/container/providers/CacheProvider/models/ICacheProvider';
-
 import AppError from '@shared/errors/AppError';
 import INotificationsRepository from '@modules/notifications/repositories/INotificationsRepository';
 import Appointment from '../infra/typeorm/entities/Appointment';
@@ -61,6 +60,7 @@ class CreateAppointmentService {
 
     const findAppointmentInSameDate = await this.appointmentsRepository.findByDate(
       appointmentDate,
+      provider_id,
     );
 
     if (findAppointmentInSameDate) {
@@ -79,12 +79,12 @@ class CreateAppointmentService {
       recipient_id: provider_id,
       content: `Novo agendamento para o dia ${dateFormated}`,
     });
-    console.log(
-      `provider-appointments:${provider_id}:${format(
-        appointmentDate,
-        'yyyy-M-d',
-      )}`,
-    );
+    // console.log(
+    //   `provider-appointments:${provider_id}:${format(
+    //     appointmentDate,
+    //     'yyyy-M-d',
+    //   )}`,
+    // );
 
     await this.cacheProvider.invalidate(
       `provider-appointments:${provider_id}:${format(
