@@ -4,7 +4,7 @@ import { animated } from 'react-spring';
 
 interface ContainerProps {
     type?: string;
-    hasDescription: boolean;
+    hasDescription: number;
 }
 export const Container = styled(animated.div)<ContainerProps>`
     width: 360px;

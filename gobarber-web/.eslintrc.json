@@ -47,6 +47,7 @@
         "import/prefer-default-export": "off",
         "react/jsx-one-expression-per-line": "off",
         "react/jsx-indent": "off",
+        "@typescript-eslint/camelcase": "off",
         "@typescript-eslint/explicit-function-return-type": [
             "error",
             {
