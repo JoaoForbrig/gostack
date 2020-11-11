@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import DayPicker from 'react-day-picker';
+import 'react-day-picker/lib/style.css';
 
 import { FiClock, FiPower } from 'react-icons/fi';
 import {
@@ -10,12 +12,15 @@ import {
     Schedule,
     Calendar,
     NextAppointment,
+    Section,
+    Appointment,
 } from './styles';
 
 import logoImg from '../../assets/logo.svg';
 import { useAuth } from '../../hooks/auth';
 
 const Dashboard: React.FC = () => {
+    const [selectedDate, setSelectedDate] = useState(new Date());
     const { signOut, user } = useAuth();
 
     return (
@@ -52,15 +57,79 @@ const Dashboard: React.FC = () => {
                                 src="https://avatars2.githubusercontent.com/u/62452520?s=400&u=cf26ea694755e5d396e77bd65bfc1cfd2eceac2d&v=4"
                                 alt="João Forbrig"
                             />
-                            <strong>Diego Fernandes</strong>
+                            <strong>João Forbrig</strong>
                             <span>
                                 <FiClock />
                                 08:00
                             </span>
                         </div>
                     </NextAppointment>
+                    <Section>
+                        <strong>Manhã</strong>
+                        <Appointment>
+                            <span>
+                                <FiClock />
+                                08:00
+                            </span>
+                            <div>
+                                <img
+                                    src="https://avatars2.githubusercontent.com/u/62452520?s=400&u=cf26ea694755e5d396e77bd65bfc1cfd2eceac2d&v=4"
+                                    alt="João Forbrig"
+                                />
+                                <strong>João Forbrig</strong>
+                            </div>
+                        </Appointment>
+                        <Appointment>
+                            <span>
+                                <FiClock />
+                                08:00
+                            </span>
+                            <div>
+                                <img
+                                    src="https://avatars2.githubusercontent.com/u/62452520?s=400&u=cf26ea694755e5d396e77bd65bfc1cfd2eceac2d&v=4"
+                                    alt="João Forbrig"
+                                />
+                                <strong>João Forbrig</strong>
+                            </div>
+                        </Appointment>
+                    </Section>
+
+                    <Section>
+                        <strong>Tarde</strong>
+                        <Appointment>
+                            <span>
+                                <FiClock />
+                                08:00
+                            </span>
+                            <div>
+                                <img
+                                    src="https://avatars2.githubusercontent.com/u/62452520?s=400&u=cf26ea694755e5d396e77bd65bfc1cfd2eceac2d&v=4"
+                                    alt="João Forbrig"
+                                />
+                                <strong>João Forbrig</strong>
+                            </div>
+                        </Appointment>
+                    </Section>
                 </Schedule>
-                <Calendar />
+                <Calendar>
+                    <DayPicker
+                        weekdaysShort={['D', 'S', 'T', 'Q', 'Q', 'S', 'S']}
+                        months={[
+                            'Janeiro',
+                            'Fevereiro',
+                            'Março',
+                            'Abril',
+                            'Maio',
+                            'Junho',
+                            'Julho',
+                            'Agosto',
+                            'Setembro',
+                            'Outubro',
+                            'Novembro',
+                            'Dezembro',
+                        ]}
+                    />
+                </Calendar>
             </Content>
         </Container>
     );
