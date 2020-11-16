@@ -38,7 +38,7 @@ const SignIn: React.FC = () => {
 
   const { signIn } = useAuth();
 
-  // formRef.current?.setFieldValue;
+  formRef.current?.setFieldValue;
 
   const handleSignIn = useCallback(
     async (data: SignInFormData) => {
