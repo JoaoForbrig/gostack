@@ -9,14 +9,13 @@ import React, {
 import { IconBaseProps } from 'react-icons';
 import { FiAlertCircle } from 'react-icons/fi';
 import { useField } from '@unform/core';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import Tooltip from '../Tooltip';
+
 import { Container, Error } from './styles';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     name: string;
     containerStyle?: object;
-    icon: React.ComponentType<IconBaseProps>;
+    icon?: React.ComponentType<IconBaseProps>;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -31,6 +30,10 @@ const Input: React.FC<InputProps> = ({
     const [isFilled, setIsFilled] = useState(false);
 
     const { fieldName, defaultValue, error, registerField } = useField(name);
+
+    const handleInputFocus = useCallback(() => {
+        setIsFocused(true);
+    }, []);
 
     const handleInputBlur = useCallback(() => {
         setIsFocused(false);
@@ -52,15 +55,17 @@ const Input: React.FC<InputProps> = ({
             isErrored={!!error}
             isFilled={isFilled}
             isFocused={isFocused}
+            data-testid="input-container"
         >
             {Icon && <Icon size={20} />}
             <input
-                onFocus={() => setIsFocused(true)}
+                onFocus={handleInputFocus}
                 onBlur={handleInputBlur}
                 defaultValue={defaultValue}
                 ref={inputRef}
                 {...rest}
             />
+
             {error && (
                 <Error title={error}>
                     <FiAlertCircle color="#c53030" size={20} />
