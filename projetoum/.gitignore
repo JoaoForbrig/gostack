@@ -3,6 +3,9 @@ node_modules/
 coverage
 dist
 ormconfig.json
+build/
+.vscode/
+dist
 
 tmp/*
 !tmp/.gitkeep
