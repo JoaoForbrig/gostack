@@ -20,10 +20,14 @@ jobs:
           node-version: 12.x
      # Instalar as dependecias NPM/Yarn
       - name: Install dependecies
-        run: yarn
+        run: | 
+            cd projetoum
+            yarn
      # Executar a build
       - name: Run build
-        run: yarn build
+        run: |
+           cd projetoum
+           yarn build
        
       - name: Copi dist to Digital Ocean
         uses: appleboy/scp-action@master
